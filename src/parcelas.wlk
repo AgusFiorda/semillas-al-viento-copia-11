@@ -1,11 +1,11 @@
 import plantas.*
 
 class Parcela {
-	var property ancho
-	var property largo
-	var property horasDeSol
+	var property ancho=0
+	var property largo=0
+	var property horasDeSol=0
 	var plantas=[]
-	
+	//inicializo las variables para no tener que setear todo en los test!
 	
 	method superficie(){
 		return self.ancho()*self.largo()
@@ -41,15 +41,20 @@ class Parcela {
 	method seAsociaBien(planta)
 	
 	
+	 method bienAsociadas(){
+		return ((plantas.filter({	p=>p.seAsociaBien(p)}).size()) /  self.cantidadPlantas()) *100
+	}
 }
 class ParcelaEcologica inherits Parcela{
 	override method seAsociaBien(planta){
 		return self.tieneSangreJoven() and planta.leResultaIdeal(self)
 	}
 	
+	
 }
 class ParcelaIndustrial inherits Parcela{
 	override method seAsociaBien(planta){
 		return self.cantidadPlantas()>=2 and planta.esFuerte()
 	}
+	
 }

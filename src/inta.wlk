@@ -11,8 +11,8 @@ object inta {
 		return parcelas.sum({p=>p.cantidadPlantas()}) / (parcelas.size())
 	}
 	method masAutosustentable(){
-	 	if(parcelas.cantidadPlantas()>4){
-	 		//me quede sin tiempo :(
-	 	}
+	 	return parcelas.filter({p=>p.cantidadPlantas()>4}).max({p=>p.bienAsociadas()})
+	 		
+	 	
 	}
 }
