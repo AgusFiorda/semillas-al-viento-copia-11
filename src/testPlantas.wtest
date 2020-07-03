@@ -1,0 +1,31 @@
+import plantas.*
+test "testX" {
+	
+	const menta1= new Menta(altura=1)
+	
+	assert.that(menta1.daNuevasSemillas())
+	assert.equals(2,menta1.espacio())
+	
+	const soja1 = new Soja(anioDeObtencion=2009,altura=0.6)
+	
+	assert.equals(8,soja1.horasDeSolTolera())
+	assert.notThat(soja1.daNuevasSemillas())
+	assert.equals(0.3,soja1.espacio())
+	assert.equals(8,soja1.horasDeSolTolera())
+	const quinoa1 = new Quinoa(espacio=0.2,anioDeObtencion=2010)
+	
+	assert.notThat(quinoa1.daNuevasSemillas())//en el enunciado dice que su origen es 2010 y da semillas, es un error,
+	//porque tiene que estar entre 2001 y 2008 para dar semillas.
+	const quinoa2 = new Quinoa(espacio=0.9,anioDeObtencion=2006)
+	
+	assert.that(quinoa2.daNuevasSemillas()) // esta quinoa2 Si da nuevas semillas ya que su año de obtencion es en el 2006
+
+}
+test "variedades"{
+	const hierbabuena1= new Hierbabuena(altura=1)
+	
+	assert.equals(4,hierbabuena1.espacio())
+	
+	const sojaTransgenica1= new SojaTransgenica()
+	assert.notThat(sojaTransgenica1.daNuevasSemillas())
+}

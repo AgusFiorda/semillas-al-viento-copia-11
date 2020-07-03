@@ -1,0 +1,25 @@
+import plantas.*
+import parcelas.*
+test "testX" {
+	const parcela1= new ParcelaEcologica(ancho=20,largo=1,horasDeSol=10)
+	const soja1 = new Soja(altura=1.2, anioDeObtencion=2010)
+	const soja2 = new Soja(altura=1.3, anioDeObtencion=2010)
+	const soja3 = new Soja(altura=1.4, anioDeObtencion=2010)
+	const soja4 = new Soja(altura=1.5, anioDeObtencion=2010)
+	
+	const quinoa1 = new Quinoa()
+	assert.equals(20,parcela1.superficie())
+	assert.equals(4,parcela1.cantidadMaxima())
+	
+	parcela1.plantarUnaPlanta(soja1)
+	parcela1.plantarUnaPlanta(soja2)
+	parcela1.plantarUnaPlanta(soja3)
+	parcela1.plantarUnaPlanta(soja4)
+	
+	
+	assert.notThat(parcela1.tieneSangreJoven())
+	assert.equals("error: la parcela esta llena",parcela1.plantarUnaPlanta(quinoa1))
+	
+	assert.equals(1.5,parcela1.plantaMasAlta())
+	
+}
